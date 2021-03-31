@@ -378,6 +378,7 @@ function create_registry_manifest {
         DOCKER_IMAGES="$DOCKER_IMAGES ${TARGET_RELEASE}-aarch64"
       fi
 
+      rm -rvf ~/.docker/manifests/*"$(echo "$TARGET_RELEASE" | cut -d ":" -f2)"*
       #shellcheck disable=SC2086
       docker manifest create $DOCKER_IMAGES
       if [ -n "$BUILD_ARM" ]; then
